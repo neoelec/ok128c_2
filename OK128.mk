@@ -65,7 +65,9 @@ VPATH		:= $(OK128_PATH)
 
 # List C source files here. (C dependencies are automatically generated.)
 CSRCS		:= $(TARGET).c
+ifneq (1,$(NO_OK128_LIB))
 CSRCS		+= OK128.c $(GLCD_CSRC)
+endif
 
 
 # List Assembler source files here.
@@ -364,7 +366,7 @@ $(BINDIR) $(OBJDIR):
 
 # Display size of file.
 HEXSIZE		:= $(SIZE) --target=$(FORMAT) $(OUTPUT).hex
-ELFSIZE		:= $(SIZE) --format=avr $(OUTPUT).elf
+ELFSIZE		:= $(SIZE) --format=berkeley --radix=10 $(OUTPUT).elf
 
 sizebefore:
 	@if test -f $(OUTPUT).elf; then echo; echo $(MSG_SIZE_BEFORE); $(ELFSIZE); \
