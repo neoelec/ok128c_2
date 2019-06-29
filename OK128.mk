@@ -39,6 +39,9 @@
 #----------------------------------------------------------------------------
 
 
+OK128_PATH	:= $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
+
 # MCU name
 MCU		:= atmega128
 
